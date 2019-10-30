@@ -8,7 +8,7 @@ interface Props {
   color: Color;
 }
 
-export class Line extends React.PureComponent<Props> {
+export class Line extends React.Component<Props> {
   render() {
     const { color, stations } = this.props
 
