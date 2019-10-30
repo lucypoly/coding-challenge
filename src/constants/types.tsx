@@ -16,6 +16,7 @@ export interface Station {
 }
 
 export interface Train {
+    moving: boolean,
     coordinates: Station,
     color: Color,
     passengers: number

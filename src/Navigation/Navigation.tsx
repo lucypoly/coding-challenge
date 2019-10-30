@@ -2,16 +2,18 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { toggleMoving } from 'actions/actions'
 
-import { Line, Color } from 'constants/types'
+import { Train, Color } from 'constants/types'
 
 interface Props {
-  lines: ReadonlyArray<Line>;
+  trains: ReadonlyArray<Train>;
   toggleMoving(color: Color): void;
 }
 
 class Navigation extends React.PureComponent<Props> {
   componentDidMount() {
+    console.log(this.props.trains)
     this.props.toggleMoving(Color.red)
+    console.log(this.props.trains)
   }
 
   render() {
@@ -20,7 +22,7 @@ class Navigation extends React.PureComponent<Props> {
 }
 
 const mapStateToProps = state => ({
-  ...state,
+  trains: state.trains,
 })
 
 const mapDispatchToProps = dispatch => ({

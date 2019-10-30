@@ -27,7 +27,6 @@ export const setTrains = (state = initialState, action) => {
     case ActionTypes.TOGGLE_MOVING:
       const currentTrain = state.find(train => train.color === action.payload)
       currentTrain.moving = !currentTrain.moving
-      debugger
       return { ...state }
     default:
       return state

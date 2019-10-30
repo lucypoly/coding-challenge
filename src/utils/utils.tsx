@@ -7,4 +7,5 @@ export const getStartTrainPosition = (
     coordinates: line.stations[0],
     color: line.color,
     passengers: line.passengers,
+    moving: false,
   }))
