@@ -1,0 +1,78 @@
+{
+  "name": "challenge",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@nivo/line": "^0.59.3",
+    "@types/react": "^16.9.11",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-scripts": "3.2.0",
+    "react-vis": "^1.11.7",
+    "recharts": "^1.8.5",
+    "typescript": "^3.6.4",
+    "victory": "^33.1.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "precommit": "lint-staged",
+    "lint:js": "tslint -p . 'src/**/*.ts{,x}'",
+    "lint:js:fix": "npm run lint:js -- --fix",
+    "lint:styles": "stylelint src/**/*.scss --fix",
+    "lint:styled-components": "stylelint --config '.stylelintrc.styled-components.json' src/**/*.ts{,x}",
+    "lint": "concurrently \"npm run lint:js\" \"npm run lint:styles\" \"npm run lint:styled-components\"",
+    "code-format:check": "prettier -l '**/*.{ts,tsx,json,md,js,scss}'",
+    "code-format:fix": "prettier --write '**/*.{ts,tsx,json,md,js,scss}'"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "prettier": "^1.18.2",
+    "jest": "^24.9.0",
+    "concurrently": "^4.1.0",
+    "tslint": "^5.11.0",
+    "stylelint": "^9.10.0"
+  },
+  "lint-staged": {
+    "**/*.ts{,x}": [
+      "tslint --fix",
+      "stylelint --config .stylelintrc.styled-components.json",
+      "prettier --write",
+      "git add",
+      "tslint --project tsconfig.json"
+    ],
+    "**/*.json": [
+      "prettier --write",
+      "git add"
+    ],
+    "**/*.js": [
+      "prettier --write",
+      "git add"
+    ],
+    "**/*.scss": [
+      "prettier --write",
+      "stylelint",
+      "git add"
+    ],
+    "**/*.md": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}
