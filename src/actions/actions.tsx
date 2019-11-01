@@ -1,10 +1,18 @@
 export enum ActionTypes {
-    TOGGLE_MOVING = 'TOGGLE_MOVING',
+    START_MOVING = 'START_MOVING',
+    STOP_MOVING = 'STOP_MOVING',
 }
 
-export const toggleMoving = color => dispatch => {
+export const startMoving = color => dispatch => {
   dispatch({
-    type: ActionTypes.TOGGLE_MOVING,
+    type: ActionTypes.START_MOVING,
+    payload: color,
+  })
+}
+
+export const stopMoving = color => dispatch => {
+  dispatch({
+    type: ActionTypes.STOP_MOVING,
     payload: color,
   })
 }

@@ -12,7 +12,6 @@ export const LINES: ReadonlyArray<Line> = [
       { x: 7, y: 5 },
     ],
     color: Color.green,
-    passengers: 100,
   },
   {
     stations: [
@@ -24,7 +23,6 @@ export const LINES: ReadonlyArray<Line> = [
       { x: 6, y: 3 },
     ],
     color: Color.blue,
-    passengers: 200,
   },
   {
     stations: [
@@ -36,6 +34,5 @@ export const LINES: ReadonlyArray<Line> = [
       { x: 3, y: 1 },
     ],
     color: Color.red,
-    passengers: 300,
   },
 ]

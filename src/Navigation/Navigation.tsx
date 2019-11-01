@@ -1,23 +1,30 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { toggleMoving } from 'actions/actions'
-
 import { Train, Color } from 'constants/types'
+import MoveButton from 'MoveButton'
 
 interface Props {
   trains: ReadonlyArray<Train>;
-  toggleMoving(color: Color): void;
+  startMoving(color: Color): void;
+  stopMoving(color: Color): void;
 }
 
 class Navigation extends React.PureComponent<Props> {
-  componentDidMount() {
-    console.log(this.props.trains)
-    this.props.toggleMoving(Color.red)
-    console.log(this.props.trains)
-  }
-
   render() {
-    return <>Hi!</>
+    const { trains } = this.props
+
+    return (
+      <>
+        {trains.length &&
+          trains.map(train => (
+            <MoveButton
+              key={`button-${train.color}`}
+              color={train.color}
+              moving={train.moving}
+            />
+          ))}
+      </>
+    )
   }
 }
 
@@ -25,11 +32,4 @@ const mapStateToProps = state => ({
   trains: state.trains,
 })
 
-const mapDispatchToProps = dispatch => ({
-  toggleMoving: (color: Color) => dispatch(toggleMoving(color)),
-})
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Navigation)
+export default connect(mapStateToProps)(Navigation)

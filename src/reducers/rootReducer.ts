@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
 
-import { setTrains } from './reducers'
+import { moveTrainReducer } from './reducers'
 
-export default combineReducers({ trains: setTrains })
+export default combineReducers({ trains: moveTrainReducer })

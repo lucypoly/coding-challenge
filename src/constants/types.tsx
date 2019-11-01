@@ -1,7 +1,6 @@
 export interface Line {
     stations: ReadonlyArray<Station>,
     color: Color,
-    passengers: number
 }
 
 export enum Color {
@@ -15,9 +14,15 @@ export interface Station {
     y: number
 }
 
+export enum Direction {
+    straight = 'straight',
+    forward = 'forward'
+}
 export interface Train {
     moving: boolean,
     coordinates: Station,
+    nextCoordinates: Station,
     color: Color,
-    passengers: number
+    passengers: number,
+    direction: Direction,
 }
