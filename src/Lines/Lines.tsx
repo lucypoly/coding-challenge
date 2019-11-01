@@ -1,5 +1,5 @@
 import React from 'react'
-import { XYPlot, MarkSeries, LineMarkSeries } from 'react-vis'
+import { XYPlot, MarkSeries, LineMarkSeries, Hint } from 'react-vis'
 import { connect } from 'react-redux'
 
 import { Train, Line } from 'constants/types'
@@ -18,6 +18,7 @@ const Lines: React.FC<Props> = ({ lines, trains }: Props) => (
         data={line.stations}
       />
     ))}
+    {/*Can't wrap MarkSeries and Hint together because of the library bug*/}
     {trains.map(train => (
       <MarkSeries
         key={`train-${train.color}`}
@@ -25,6 +26,15 @@ const Lines: React.FC<Props> = ({ lines, trains }: Props) => (
         data={[train.coordinates]}
         strokeWidth={5}
       />
+    ))}
+    {trains.map(train => (
+      <Hint
+        key={`passengers-${train.color}`}
+        value={train.coordinates}
+        style={{ background: 'black', margin: '5px', padding: '5px' }}
+      >
+        {train.passengers}
+      </Hint>
     ))}
   </XYPlot>
 )
