@@ -31,18 +31,21 @@ const initialState: ReadonlyArray<Train> = [
 
 export const moveTrainReducer = (state = initialState, action) => {
   const currentTrain = state.find(train => train.color === action.payload)
-
   switch (action.type) {
     case ActionTypes.START_MOVING:
-      const currentLine = getLineByColor(action.payload)
       const collisionTrain = getCollisionTrain(state, currentTrain)
-      const shouldStop =
-        collisionTrain &&
-        collisionTrain.moving &&
-        collisionTrain.passengers > currentTrain.passengers
+      const currentLine = getLineByColor(action.payload)
 
+      // check train collision
+      const shouldStop =
+        collisionTrain && collisionTrain.passengers > currentTrain.passengers
+      const shouldStopCollision =
+        collisionTrain && collisionTrain.passengers < currentTrain.passengers
+
+      if (shouldStopCollision) {
+        collisionTrain.moving = false
+      }
       if (shouldStop) {
-        console.log('collision!')
         currentTrain.moving = false
       } else {
         currentTrain.moving = true

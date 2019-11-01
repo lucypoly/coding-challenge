@@ -19,6 +19,7 @@ const Lines: React.FC<Props> = ({ lines, trains }: Props) => (
       />
     ))}
     {/*Can't wrap MarkSeries and Hint together because of the library bug*/}
+    {/*https://github.com/uber/react-vis/issues/1260*/}
     {trains.map(train => (
       <MarkSeries
         key={`train-${train.color}`}

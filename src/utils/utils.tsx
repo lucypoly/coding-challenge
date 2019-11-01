@@ -57,10 +57,20 @@ export const moveTrain = (train: Train, line: Line) => {
   train.direction = position.direction
 }
 
-export const getCollisionTrain = (state, currentTrain: Train) =>
-  state.find(
+export const getCollisionTrain = (state, currentTrain: Train) => {
+  const collisionTrainIsStopped = train =>
+    !train.moving &&
+    train.coordinates.x === currentTrain.nextCoordinates.x &&
+    train.coordinates.y === currentTrain.nextCoordinates.y
+
+  const collisionTrainIsMoving = train =>
+    train.moving &&
+    train.nextCoordinates.x === currentTrain.nextCoordinates.x &&
+    train.nextCoordinates.y === currentTrain.nextCoordinates.y
+
+  return state.find(
     train =>
-      train.color !== currentTrain.color &&
-      train.nextCoordinates.x === currentTrain.nextCoordinates.x &&
-      train.nextCoordinates.y === currentTrain.nextCoordinates.y
+      (train.color !== currentTrain.color && collisionTrainIsMoving(train)) ||
+      collisionTrainIsStopped(train)
   )
+}
