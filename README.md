@@ -3,6 +3,10 @@ https://lucypoly.github.io/coding-challenge/
 
 In the project directory, you can run:
 
+### `npm i`
+
+This command installs a package, and any packages that it depends on.
+
 ### `npm start`
 
 Runs the app in the development mode.<br />
